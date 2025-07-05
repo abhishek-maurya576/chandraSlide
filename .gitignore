@@ -1,0 +1,34 @@
+# Ignore Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Ignore IDE and editor directories
+.idea/
+.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore datasets and large files
+# These should be downloaded separately or hosted on a cloud drive (e.g., Google Drive)
+data/raw/
+data/processed/
+data/labeled/
+data/yolo_moon_dataset/
+moon/
+mars/
+
+# Ignore model output directories
+models/
+runs/
+
+# Ignore sensitive information if any
+*.env
+*.private 

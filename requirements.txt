@@ -1,0 +1,33 @@
+# Core ML & Data Science
+numpy
+pandas
+scikit-learn
+scikit-image
+
+# Deep Learning
+# Note: Specific CUDA version may be required.
+# Install PyTorch from https://pytorch.org/get-started/locally/
+torch
+torchvision
+torchaudio
+
+# Geospatial Processing
+gdal
+rasterio
+geopandas
+
+# Computer Vision
+opencv-python
+
+# Dashboard
+streamlit
+
+# Object Detection (Placeholder)
+# ultralytics for YOLOv8
+ultralytics
+
+# Visualization
+matplotlib
+plotly
+folium
+
