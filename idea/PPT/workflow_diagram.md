@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     subgraph "A. Data Inputs"
         direction LR
@@ -51,4 +52,5 @@ graph TD
     
     class A1,A2,A3 inputs
     class B1_IN,B1_MODEL,B2_LS,B2_BD,B2_TD processing
-    class C1,C2,C3 outputs 
+    class C1,C2,C3 outputs
+``` 

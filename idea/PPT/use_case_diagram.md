@@ -1,4 +1,3 @@
-```mermaid
 %%{init: {'theme': 'default'}}%%
 flowchart LR
     A[Lunar Scientist]
@@ -18,4 +17,4 @@ flowchart LR
     A --> UC6
 
     UC2 --> UC3
-    UC2 --> UC4
+    UC2 --> UC4 

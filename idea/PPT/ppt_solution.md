@@ -61,10 +61,10 @@ Our solution, **Project ChandraSlide**, is an end-to-end system that transforms 
 
 This diagram illustrates the entire process, from data input to final analysis.
 
-[Link to Workflow Diagram](./workflow_diagram.mmd)
+[Link to Workflow Diagram](./workflow_diagram.md)
 
 ```
-![Workflow Diagram](workflow_diagram.mmd)
+![Workflow Diagram](workflow_diagram.md)
 ```
 
 ---
@@ -73,10 +73,10 @@ This diagram illustrates the entire process, from data input to final analysis.
 
 This wireframe illustrates the main interface of the **ChandraSlide Dashboard**. It shows the control panel for analysis, the central interactive map, and the information panel that displays results and statistics.
 
-[Link to Dashboard Wireframe](./dashboard_wireframe.mmd)
+[Link to Dashboard Wireframe](./dashboard_wireframe.md)
 
 ```
-![Dashboard Wireframe](dashboard_wireframe.mmd)
+![Dashboard Wireframe](dashboard_wireframe.md)
 ```
 
 ---
@@ -123,8 +123,8 @@ This covers the infrastructure needed for model training and hosting the final a
 
 This diagram shows the primary ways a scientist would interact with the ChandraSlide system.
 
-[Link to Use-Case Diagram](./use_case_diagram.mmd)
+[Link to Use-Case Diagram](./use_case_diagram.md)
 
 ```
-![Use-Case Diagram](use_case_diagram.mmd)
+![Use-Case Diagram](use_case_diagram.md)
 ``` 

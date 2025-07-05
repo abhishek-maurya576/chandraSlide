@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     subgraph "ChandraSlide - Lunar Analysis Dashboard"
         direction LR
@@ -25,4 +26,5 @@ graph TD
             C2 --> C3("<b>Selection Details:</b><br/><i>(Click an item on the map)</i>")
             C3 --> C4("<b><br/>Boulder #121 (Clicked)</b><br/>------------------<br/>Coords: 23.4° N, 15.6° W<br/>Diameter: 3.2 m<br/><b>Est. Height: 1.5 m (from shadow)</b><br/><b>Est. Volume: ~6.0 m³</b><br/>Classification: Ejecta Field")
         end
-    end 
+    end
+``` 
