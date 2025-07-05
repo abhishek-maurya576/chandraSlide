@@ -1,19 +1,20 @@
-left to right direction
-actor "Lunar Scientist" as Scientist
+usecaseDiagram
+  left to right direction
+  actor "Lunar Scientist" as Scientist
 
-rectangle "ChandraSlide System" {
-  usecase "1. Select & Analyze Lunar Region" as UC1
-  usecase "2. Visualize Detections on Map" as UC2
-  usecase "3. Inspect Landslide Details" as UC3
-  usecase "4. Inspect Boulder Details (incl. 3D)" as UC4
-  usecase "5. View Active Zone 'Hotspot' Map" as UC5
-  usecase "6. Generate & Export Report" as UC6
-}
+  rectangle "ChandraSlide System" {
+    usecase "1. Select & Analyze Lunar Region" as UC1
+    usecase "2. Visualize Detections on Map" as UC2
+    usecase "3. Inspect Landslide Details" as UC3
+    usecase "4. Inspect Boulder Details (incl. 3D)" as UC4
+    usecase "5. View Active Zone 'Hotspot' Map" as UC5
+    usecase "6. Generate & Export Report" as UC6
+  }
 
-Scientist --|> UC1
-Scientist --|> UC2
-Scientist --|> UC5
-Scientist --|> UC6
+  Scientist --> UC1
+  Scientist --> UC2
+  Scientist --> UC5
+  Scientist --> UC6
 
-UC2 .> UC3 : extends
-UC2 .> UC4 : extends 
+  UC3 <.. UC2 : <<extends>>
+  UC4 <.. UC2 : <<extends>> 
