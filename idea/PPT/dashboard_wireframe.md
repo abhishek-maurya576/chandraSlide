@@ -1,6 +1,7 @@
 ```mermaid
 graph TD
     subgraph "ChandraSlide - Lunar Analysis Dashboard"
+        
         direction LR
 
         %% CONTROLS PANEL (LEFT) %%
