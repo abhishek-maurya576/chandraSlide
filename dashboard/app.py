@@ -46,8 +46,11 @@ def main():
                     st.error(f"Error loading the model: {e}")
                     return
 
-                with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(uploaded_image.name)[1]) as tfile:
-                    tfile.write(uploaded_image.getvalue())
+                with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tfile:
+                    # Open the uploaded image with PIL
+                    img = Image.open(uploaded_image).convert("RGB")
+                    # Save the converted 3-channel image as a JPEG to the temp file
+                    img.save(tfile, 'jpeg')
                     temp_image_path = tfile.name
 
                 annotated_image = run_detection(temp_image_path, model)
