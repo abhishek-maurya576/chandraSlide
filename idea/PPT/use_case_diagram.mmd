@@ -1,20 +1,20 @@
-usecaseDiagram
-  left to right direction
-  actor "Lunar Scientist" as Scientist
+%%{init: {'theme': 'default'}}%%
+flowchart LR
+    actorScientist([Lunar Scientist])
 
-  rectangle "ChandraSlide System" {
-    usecase "1. Select & Analyze Lunar Region" as UC1
-    usecase "2. Visualize Detections on Map" as UC2
-    usecase "3. Inspect Landslide Details" as UC3
-    usecase "4. Inspect Boulder Details (incl. 3D)" as UC4
-    usecase "5. View Active Zone 'Hotspot' Map" as UC5
-    usecase "6. Generate & Export Report" as UC6
-  }
+    subgraph "ChandraSlide System"
+        UC1([1. Select & Analyze Lunar Region])
+        UC2([2. Visualize Detections on Map])
+        UC3([3. Inspect Landslide Details])
+        UC4([4. Inspect Boulder Details (incl. 3D)])
+        UC5([5. View Active Zone 'Hotspot' Map])
+        UC6([6. Generate & Export Report])
+    end
 
-  Scientist --> UC1
-  Scientist --> UC2
-  Scientist --> UC5
-  Scientist --> UC6
+    actorScientist --> UC1
+    actorScientist --> UC2
+    actorScientist --> UC5
+    actorScientist --> UC6
 
-  UC3 <.. UC2 : <<extends>>
-  UC4 <.. UC2 : <<extends>> 
+    UC2 --> UC3
+    UC2 --> UC4
