@@ -1,14 +1,14 @@
 %%{init: {'theme': 'default'}}%%
 flowchart LR
-    actorScientist([Lunar Scientist])
+    actorScientist(["Lunar Scientist"])
 
     subgraph "ChandraSlide System"
-        UC1(["1. Select & Analyze Lunar Region"])
+        UC1(["1. Select and Analyze Lunar Region"])
         UC2(["2. Visualize Detections on Map"])
         UC3(["3. Inspect Landslide Details"])
-        UC4(["4. Inspect Boulder Details (incl. 3D)"])
-        UC5(["5. View Active Zone 'Hotspot' Map"])
-        UC6(["6. Generate & Export Report"])
+        UC4(["4. Inspect Boulder Details (3D view)"])
+        UC5(["5. View 'Hotspot' Active Zone Map"])
+        UC6(["6. Generate and Export Report"])
     end
 
     actorScientist --> UC1
