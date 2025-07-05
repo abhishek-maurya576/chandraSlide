@@ -18,17 +18,13 @@ Thumbs.db
 
 # Ignore datasets and large files
 # These should be downloaded separately or hosted on a cloud drive (e.g., Google Drive)
-data/raw/
-data/processed/
-data/labeled/
-data/yolo_moon_dataset/
+data/
 moon/
 mars/
 
 # Ignore model output directories
-models/
 runs/
 
 # Ignore sensitive information if any
 *.env
-*.private 
+*.private
