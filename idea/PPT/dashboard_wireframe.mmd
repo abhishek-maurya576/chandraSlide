@@ -1,0 +1,28 @@
+graph TD
+    subgraph "ChandraSlide - Lunar Analysis Dashboard"
+        direction LR
+
+        subgraph "CONTROLS"
+            direction TB
+            A1("<b>1. Select Region</b><br/>(e.g., Shackleton Crater Rim)") --> A2(Analyze Button)
+            style A2 fill:#4CAF50,color:white,stroke:#333
+            A2 --> A3("---")
+            A3 --> A4("<b>2. Toggle Overlays</b>")
+            A4 --> A5("✅ Landslides")
+            A4 --> A6("✅ Boulders")
+            A4 --> A7("🔲 Source Points")
+            A4 --> A8("✅ Active Zones")
+        end
+
+        subgraph "MAP VIEW"
+            B1("<img src='https://via.placeholder.com/600x400.png?text=Interactive+Lunar+Map' />")
+        end
+
+        subgraph "INFORMATION PANEL"
+            direction TB
+            C1("<b>Region Summary</b><br/>Boulder Density: 4.7/km²<br/>Active Landslides: 3")
+            C1 --> C2("---")
+            C2 --> C3("<b>Selection Details:</b><br/><i>(Click an item on the map)</i>")
+            C3 --> C4("<b><br/>Boulder #121 (Clicked)</b><br/>------------------<br/>Coords: 23.4° N, 15.6° W<br/>Diameter: 3.2 m<br/><b>Est. Height: 1.5 m (from shadow)</b><br/><b>Est. Volume: ~6.0 m³</b><br/>Classification: Ejecta Field")
+        end
+    end 
