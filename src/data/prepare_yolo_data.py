@@ -5,6 +5,17 @@ import yaml
 from PIL import Image
 import shutil
 
+
+def convert_bbox_to_yolo_format(box, img_width, img_height):
+    """Converts a bounding box from [xmin, ymin, xmax, ymax] to YOLO format."""
+    xmin, ymin, xmax, ymax = box
+    x_center = (xmin + xmax) / 2 / img_width
+    y_center = (ymin + ymax) / 2 / img_height
+    width = (xmax - xmin) / img_width
+    height = (ymax - ymin) / img_height
+    return x_center, y_center, width, height
+
+
 def create_yolo_dataset(image_dir, label_csv_path, output_dir, train_size=0.8):
     """
     Converts a dataset with CSV-based bounding box labels into the format
@@ -57,10 +68,8 @@ def create_yolo_dataset(image_dir, label_csv_path, output_dir, train_size=0.8):
                 with open(label_path, 'w') as f:
                     for _, row in records.iterrows():
                         # Convert bbox to YOLO format
-                        x_center = (row.xmin + row.xmax) / 2 / img_width
-                        y_center = (row.ymin + row.ymax) / 2 / img_height
-                        width = (row.xmax - row.xmin) / img_width
-                        height = (row.ymax - row.ymin) / img_height
+                        box = [row.xmin, row.ymin, row.xmax, row.ymax]
+                        x_center, y_center, width, height = convert_bbox_to_yolo_format(box, img_width, img_height)
                         class_id = 0  # Assuming 'rockfall' is the only class (class_id 0)
                         f.write(f"{class_id} {x_center} {y_center} {width} {height}\n")
             except FileNotFoundError:
@@ -85,8 +94,8 @@ def create_yolo_dataset(image_dir, label_csv_path, output_dir, train_size=0.8):
 
 if __name__ == '__main__':
     # These paths are relative to the project root where you run the script
-    LUNAR_IMAGE_DIR = 'moon/train_images'
-    LUNAR_LABEL_CSV = 'moon/train_labels/train_labels_m.csv'
+    LUNAR_IMAGE_DIR = 'data/raw/moon/train_images'
+    LUNAR_LABEL_CSV = 'data/raw/moon/train_labels/train_labels_m.csv'
     OUTPUT_YOLO_DIR = 'data/yolo_moon_dataset'
 
     create_yolo_dataset(LUNAR_IMAGE_DIR, LUNAR_LABEL_CSV, OUTPUT_YOLO_DIR) 

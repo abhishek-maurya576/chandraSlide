@@ -3,6 +3,12 @@ numpy
 pandas
 scikit-learn
 scikit-image
+gdal
+rasterio
+geopandas
+mlflow
+dvc
+pytest
 
 # Deep Learning
 # Note: Specific CUDA version may be required.

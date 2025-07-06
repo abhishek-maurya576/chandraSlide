@@ -1,0 +1,5 @@
+path: E:\ChandraSlide\data\yolo_moon_dataset
+train: images/train
+val: images/val
+names:
+- rockfall

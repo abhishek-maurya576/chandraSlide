@@ -35,7 +35,7 @@ Since training a deep learning model requires significant GPU resources, it is h
 
 Because the dataset is too large to be stored on GitHub, you need to upload it to your Google Drive.
 
-1.  Upload your dataset folder (e.g., `moon`) to a directory in your Google Drive. For example, you might have it at `My Drive/ChandraSlide/moon`.
+1.  Upload your raw dataset folders (e.g., `moon`, `mars`) to a directory in your Google Drive. For example, you might have it at `My Drive/ChandraSlide/datasets/`.
 
 ### 2. Colab Notebook Setup
 
@@ -50,10 +50,14 @@ Because the dataset is too large to be stored on GitHub, you need to upload it t
     from google.colab import drive
     drive.mount('/content/drive')
     ```
-4.  **Copy the dataset** from your Drive into the cloned repository. This makes the files accessible to the training scripts.
+4.  **Create the necessary directory structure** and **copy the dataset** from your Drive into the cloned repository. This makes the files accessible to the training scripts.
     ```python
+    # Create the directory for raw data
+    !mkdir -p data/raw
+
     # Adjust the source path to match where you stored the data in your Drive
-    !cp -r "/content/drive/My Drive/ChandraSlide/moon" .
+    # This command copies the 'moon' folder into the 'data/raw/' directory
+    !cp -r "/content/drive/My Drive/ChandraSlide/datasets/moon" data/raw/
     ```
 5.  **Install the required dependencies**:
     ```python
@@ -105,12 +109,13 @@ doi:   https://doi.org/10.3389/frsen.2021.640034
 
 The data is organized as follows:
 
-- `data/`: This directory is intended for processed data, but the raw dataset is currently located in `moon/`.
+- `data/raw/`: This directory contains the original, unaltered datasets (e.g., `moon/`, `mars/`). This data is not tracked by Git.
+- `data/processed/`: This directory contains datasets that have been cleaned, transformed, or otherwise prepared for model training (e.g., `yolo_moon_dataset/`). The processed data files are not tracked by Git, but the directory structure and any configuration files are.
 
-#### Moon Dataset
+An example structure for the raw moon dataset is:
 
--   **Location:** `moon/`
--   **Training Images:** `moon/train_images/` (contains `.tif` files)
--   **Training Labels:** `moon/train_labels/` (contains `train_classes_m.csv` and `train_labels_m.csv`)
--   **Test Images:** `moon/test_images/` (contains `.tif` files)
--   **Test Labels:** `moon/test_labels/` (contains `test_classes_m.csv` and `test_labels_m.csv`)
+-   **Location:** `data/raw/moon/`
+-   **Training Images:** `data/raw/moon/train_images/` (contains `.tif` files)
+-   **Training Labels:** `data/raw/moon/train_labels/` (contains `train_classes_m.csv` and `train_labels_m.csv`)
+-   **Test Images:** `data/raw/moon/test_images/` (contains `.tif` files)
+-   **Test Labels:** `data/raw/moon/test_labels/` (contains `test_classes_m.csv` and `test_labels_m.csv`)

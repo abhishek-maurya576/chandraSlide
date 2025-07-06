@@ -7,6 +7,8 @@ __pycache__/
 env/
 venv/
 .venv/
+.egg-info/
+src/chandra_slide.egg-info/
 
 # Ignore IDE and editor directories
 .idea/
@@ -18,9 +20,9 @@ Thumbs.db
 
 # Ignore datasets and large files
 # These should be downloaded separately or hosted on a cloud drive (e.g., Google Drive)
-data/
-moon/
-mars/
+data/raw/
+data/yolo_moon_dataset/images/
+data/yolo_moon_dataset/labels/
 
 # Ignore model output directories
 runs/

@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # Define the paths for the model and a sample test image
     MODEL_PATH = 'models/lunar_rockfall_detector.pt'
     
-    # You can change this to any image you want to test
-    TEST_IMAGE = 'moon/test_images/neg1.tif' 
+    # TODO: This should be replaced with a proper data loading mechanism
+    TEST_IMAGE = 'data/raw/moon/test_images/neg1.tif' 
 
     run_inference(MODEL_PATH, TEST_IMAGE)
