@@ -1,39 +1,21 @@
-# Core ML & Data Science
-numpy
-pandas
-scikit-learn
-scikit-image
-gdal
-rasterio
+requests
+tqdm
 geopandas
-mlflow
-dvc
-pytest
-
-# Deep Learning
-# Note: Specific CUDA version may be required.
-# Install PyTorch from https://pytorch.org/get-started/locally/
+pandas
+numpy
 torch
 torchvision
-torchaudio
-
-# Geospatial Processing
-gdal
-rasterio
-geopandas
-
-# Computer Vision
-opencv-python
-
-# Dashboard
-streamlit
-
-# Object Detection (Placeholder)
-# ultralytics for YOLOv8
 ultralytics
-
-# Visualization
+seaborn
 matplotlib
-plotly
-folium
+ipywidgets
+scipy
+pyyaml
+beautifulsoup4
+
+# NOTE: The 'gdal' library is a critical dependency for geospatial data processing.
+# However, it cannot be reliably installed via a simple 'pip install'.
+# Please follow the manual installation instructions in the README.md file
+# to install GDAL from the recommended wheel file before proceeding.
+# gdal
 

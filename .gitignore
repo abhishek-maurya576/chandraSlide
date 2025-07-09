@@ -30,3 +30,23 @@ runs/
 # Ignore sensitive information if any
 *.env
 *.private
+
+# --- ChandraSlide Project Specific ---
+
+# Ignore downloaded raw data, unpacked archives, and converted images.
+# CSV manifests for reproducibility are okay to commit.
+data/*.zip
+data/*.IMG
+data/*.tif
+data/*.tiff
+data/unpacked/
+data/converted/
+
+# Ignore trained models and experiment outputs.
+# Model definitions in src/models are version controlled.
+models/
+*.pt
+
+# Ignore large data directories
+mars/
+moon/

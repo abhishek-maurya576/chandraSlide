@@ -119,3 +119,67 @@ An example structure for the raw moon dataset is:
 -   **Training Labels:** `data/raw/moon/train_labels/` (contains `train_classes_m.csv` and `train_labels_m.csv`)
 -   **Test Images:** `data/raw/moon/test_images/` (contains `.tif` files)
 -   **Test Labels:** `data/raw/moon/test_labels/` (contains `test_classes_m.csv` and `test_labels_m.csv`)
+
+### Manual Installation Steps
+
+A key component of this project, **GDAL (Geospatial Data Abstraction Library)**, is used for processing orbital imagery. Due to its complex nature as a C++ library, it cannot be installed with a simple `pip install`. Please follow these steps carefully.
+
+**1. Determine Python Version and Architecture**
+
+You must match the GDAL version to your specific Python interpreter. First, activate your project's virtual environment. Then, run the following command:
+
+```bash
+python -c "import sys; print(sys.version)"
+```
+
+Look for two pieces of information:
+- **Python Version:** e.g., `3.8.10` (you need `3.8`).
+- **Architecture:** e.g., `64 bit (AMD64)` (you need a `win_amd64` file) or `32 bit` (you need a `win32` file).
+
+**2. Download the GDAL Wheel File**
+
+Go to the [Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal) website.
+
+Find the section for **GDAL**. Download the wheel (`.whl`) file that matches your specifications. The filename format is `GDAL‑[version]‑cp[python_version]‑cp[python_version]‑[architecture].whl`.
+
+*   `cp38` corresponds to Python 3.8.
+*   `win_amd64` corresponds to 64-bit.
+*   `win32` corresponds to 32-bit.
+
+For example, for Python 3.8 (64-bit), you would download a file like `GDAL‑3.4.3‑cp38‑cp38‑win_amd64.whl`.
+
+**3. Install the Wheel File**
+
+Navigate your terminal to the directory where you downloaded the wheel file. Then, run the following command, replacing the filename with the one you downloaded:
+
+```bash
+pip install GDAL-3.4.3-cp38-cp38-win_amd64.whl
+```
+
+**4. Set Environment Variables**
+
+GDAL needs two environment variables to locate its essential data files.
+
+*   **For Windows:**
+    You can set these permanently through the System Properties dialog, or temporarily in your command prompt for the current session:
+    ```cmd
+    set GDAL_DATA=[PATH_TO_YOUR_PYTHON_ENV]\Lib\site-packages\osgeo\data\gdal
+    set PROJ_LIB=[PATH_TO_YOUR_PYTHON_ENV]\Lib\site-packages\osgeo\data\proj
+    ```
+    Replace `[PATH_TO_YOUR_PYTHON_ENV]` with the actual path to your Python environment (e.g., `C:\Users\YourUser\my-env`).
+
+*   **For Linux/macOS:**
+    ```bash
+    export GDAL_DATA=[PATH_TO_YOUR_PYTHON_ENV]/lib/python3.8/site-packages/osgeo/data/gdal
+    export PROJ_LIB=[PATH_TO_YOUR_PYTHON_ENV]/lib/python3.8/site-packages/osgeo/data/proj
+    ```
+
+**5. Verify Installation**
+
+After completing the steps above, you can verify the installation by running:
+
+```bash
+python -c "from osgeo import gdal; print(gdal.__version__)"
+```
+
+If this command prints the GDAL version number without any errors, the installation was successful.
