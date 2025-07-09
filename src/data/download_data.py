@@ -100,8 +100,10 @@ def start_download_process(download_limit, force_download):
         # --- Download DTM ---
         dtm_name = row['DTM_Name']
         dtm_url = row['DTM_URL']
-        # DTMs are often zipped, so we preserve the original filename from the URL
+        # DTMs are often zipped. Ensure the filename has the .zip extension.
         dtm_filename = os.path.basename(urllib.parse.unquote(dtm_url))
+        if not dtm_filename.upper().endswith('.ZIP'):
+            dtm_filename += '.zip'
         dtm_output_path = os.path.join(OUTPUT_DIR, dtm_filename)
 
         print(f"  - Target DTM: {dtm_filename}")
