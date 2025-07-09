@@ -11,12 +11,12 @@ MANIFEST_PATH = "data/download_manifest.csv"
 OUTPUT_DIR = "data/"
 # DOWNLOAD_LIMIT = 5  # Set to None to download all files - Now handled by argparse
 
-def download_file(url, output_path):
+def download_file(url, output_path, force=False):
     """
     Downloads a file from a URL to a given path, showing a progress bar.
-    Skips download if the file already exists.
+    Skips download if the file already exists, unless 'force' is True.
     """
-    if os.path.exists(output_path):
+    if not force and os.path.exists(output_path):
         print(f"Skipping existing file: {os.path.basename(output_path)}")
         return True
         
@@ -50,7 +50,7 @@ def download_file(url, output_path):
         print(f"[ERROR] Could not download {url}. Reason: {e}")
         return False
 
-def start_download_process(download_limit):
+def start_download_process(download_limit, force_download):
     """
     Main function to orchestrate the data download process based on the manifest.
     """
@@ -74,6 +74,9 @@ def start_download_process(download_limit):
         print(f"\n[INFO] Applying download limit. Only the first {download_limit} pairs will be downloaded.")
         manifest_df = manifest_df.head(download_limit)
 
+    if force_download:
+        print("[INFO] Force mode enabled. Files will be re-downloaded even if they exist.")
+
     print(f"\nPreparing to download {len(manifest_df)} Image-DTM pairs...")
     
     successful_downloads = 0
@@ -91,7 +94,7 @@ def start_download_process(download_limit):
         
         print(f"  - Target Optical Image: {image_filename}")
         total_downloads += 1
-        if download_file(image_url, image_output_path):
+        if download_file(image_url, image_output_path, force=force_download):
             successful_downloads += 1
 
         # --- Download DTM ---
@@ -103,7 +106,7 @@ def start_download_process(download_limit):
 
         print(f"  - Target DTM: {dtm_filename}")
         total_downloads += 1
-        if download_file(dtm_url, dtm_output_path):
+        if download_file(dtm_url, dtm_output_path, force=force_download):
             successful_downloads += 1
 
     print("\n--- Data Acquisition Complete ---")
@@ -118,6 +121,11 @@ if __name__ == "__main__":
         default=None,
         help="Limit the number of Image-DTM pairs to download. Defaults to all."
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Force re-download of files even if they appear to exist."
+    )
     args = parser.parse_args()
 
-    start_download_process(args.limit) 
+    start_download_process(args.limit, args.force) 
