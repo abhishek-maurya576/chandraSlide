@@ -7,8 +7,8 @@ import argparse
 
 # --- Configuration ---
 MANIFEST_PATH = "data/download_manifest.csv"
-OPTICAL_OUTPUT_DIR = "data/raw/orbital_data/optical"
-DTM_OUTPUT_DIR = "data/raw/orbital_data/dtm"
+# All raw data (images and zips) will be saved directly in the 'data' directory.
+OUTPUT_DIR = "data/"
 # DOWNLOAD_LIMIT = 5  # Set to None to download all files - Now handled by argparse
 
 def download_file(url, output_path):
@@ -61,12 +61,10 @@ def start_download_process(download_limit):
         print(f"[ERROR] Manifest file not found at: {MANIFEST_PATH}")
         return
 
-    # 2. Create output directories
-    os.makedirs(OPTICAL_OUTPUT_DIR, exist_ok=True)
-    os.makedirs(DTM_OUTPUT_DIR, exist_ok=True)
-    print(f"Data will be saved to:")
-    print(f"  - Optical Images: {OPTICAL_OUTPUT_DIR}")
-    print(f"  - DTMs: {DTM_OUTPUT_DIR}")
+    # 2. Create output directory
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    print(f"Data will be saved to: {OUTPUT_DIR}")
+
 
     # 3. Read the manifest
     manifest_df = pd.read_csv(MANIFEST_PATH)
@@ -89,7 +87,7 @@ def start_download_process(download_limit):
         image_id = row['ImageID']
         image_url = row['ImageURL']
         image_filename = os.path.basename(urllib.parse.unquote(image_url))
-        image_output_path = os.path.join(OPTICAL_OUTPUT_DIR, image_filename)
+        image_output_path = os.path.join(OUTPUT_DIR, image_filename)
         
         print(f"  - Target Optical Image: {image_filename}")
         total_downloads += 1
@@ -101,7 +99,7 @@ def start_download_process(download_limit):
         dtm_url = row['DTM_URL']
         # DTMs are often zipped, so we preserve the original filename from the URL
         dtm_filename = os.path.basename(urllib.parse.unquote(dtm_url))
-        dtm_output_path = os.path.join(DTM_OUTPUT_DIR, dtm_filename)
+        dtm_output_path = os.path.join(OUTPUT_DIR, dtm_filename)
 
         print(f"  - Target DTM: {dtm_filename}")
         total_downloads += 1
